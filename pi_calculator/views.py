@@ -23,7 +23,7 @@ def sun_circumference(request):
 
     data = {
         "pi_value": str(latest_pi),
-        "circumference": f"{circumference} kilometers",
+        "circumference": f"{str(circumference)} kilometers",
     }
 
     return Response(data)

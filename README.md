@@ -1,6 +1,7 @@
 # Naluri Space Project
 
-Explore the solar system with our advanced calculations. This project aims to calculate and display the circumference of the sun based on a continuously improving approximation of π.
+Welcome to the Naluri Space Project web application. This project is designed to calculate the value of Pi with increasing accuracy. Using the most precise value of Pi we derive, the application then determines the circumference of the sun.
+
 
 ## Features:
 
@@ -13,14 +14,13 @@ Explore the solar system with our advanced calculations. This project aims to ca
 
 - Python (3.11 or higher)
 - Redis server
-- RabbitMQ or another broker supported by Celery
 
 ## Setup & Installation:
 
 1. **Clone the repository:**
 
    ```
-   git clone https://your-repository-link.git
+   git clone https://github.com/samcarmen/sun-circumference.git
    cd sun_circumference
    ```
 
@@ -48,22 +48,33 @@ Explore the solar system with our advanced calculations. This project aims to ca
    redis-server &
    ```
 
-   Make sure Redis is set up to persist data by checking or modifying its configuration. Typically, you'd ensure that either the RDB or AOF persistence option is enabled in the `redis.conf` file.
 
-4. **Set up Celery:**
+## Run the project:
 
-   We use Celery for background tasks. Ensure you have a broker like RabbitMQ installed or choose another supported broker.
+The `Makefile` provided in this project simplifies the process of starting, stopping, and restarting the necessary services for this application. Below are the available commands:
 
-   Start the Celery worker from the main project directory:
-   
-   ```
-   celery -A your_project_name worker --loglevel=info
-   ```
+1. **Start Services:**
 
-5. **Run the Django development server:**
+   This command will start Redis, Celery, and the Django server. It also triggers the `compute_pi_indefinitely` function to begin calculating π.
 
    ```
-   python manage.py runserver
+   make start
+   ```
+
+2. **Stop Services:**
+
+   Use this command to gracefully shut down all running services initiated by the `start` command.
+
+   ```
+   make stop
+   ```
+
+3. **Restart Services:**
+
+   If you need to refresh all services, use this command. It will stop and then restart all the services.
+
+   ```
+   make restart
    ```
 
 ## Usage:
