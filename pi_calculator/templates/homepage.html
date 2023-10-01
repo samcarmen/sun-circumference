@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{% static "images/favicon.png" %}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naluri Space Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="text-center">
+            <h1 class="display-4">Naluri Space Project</h1>
+            <p class="lead">Explore the circumference of the sun</p>
+            <hr class="my-4">
+            <p><strong>Current value of Pi:</strong> <span id="pi-value">Calculating...</span></p>
+            <p><strong>Circumference of the Sun:</strong> <span id="circumference-value">Calculating...</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Poll the sun_circumference endpoint to get updated data
+        function fetchData() {
+            fetch("/sun_circumference/")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("pi-value").innerText = data.pi_value;
+                    document.getElementById("circumference-value").innerText = data.circumference;
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                });
+        }
+
+        // Call fetchData every 10 seconds
+        setInterval(fetchData, 2000);
+        fetchData();
+    </script>
+</body>
+</html>
