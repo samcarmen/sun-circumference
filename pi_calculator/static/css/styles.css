@@ -1,0 +1,19 @@
+.break-word {
+    word-break: break-all;
+}
+
+footer {
+    background-color: #f8f9fa;  /* This is a light grey color */
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}

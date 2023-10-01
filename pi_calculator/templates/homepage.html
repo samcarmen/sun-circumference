@@ -5,8 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="{% static "images/favicon.png" %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naluri Space Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -16,13 +18,26 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="text-center">
             <h1 class="display-4">Naluri Space Project</h1>
-            <p class="lead">Explore the circumference of the sun</p>
-            <hr class="my-4">
-            <p><strong>Current value of Pi:</strong> <span id="pi-value">Calculating...</span></p>
-            <p><strong>Circumference of the Sun:</strong> <span id="circumference-value">Calculating...</span></p>
+            <p class="lead">Explore the circumference of the sun ☀️</p>
+            <hr class="my-7">
+            <div class="d-flex justify-content-between">
+                <div class="col-md-4 text-right no-wrap">
+                    <strong>Current value of Pi:</strong>
+                </div>
+                <div class="col-md-8 text-left">
+                    <span id="pi-value" class="break-word"></span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="col-md-4 text-right no-wrap">
+                    <strong>Circumference of the Sun:</strong>
+                </div>
+                <div class="col-md-8 text-left">
+                    <span id="circumference-value"></span>
+                </div>
+            </div>
         </div>
     </div>
-
     <script>
         // Poll the sun_circumference endpoint to get updated data
         function fetchData() {
@@ -41,5 +56,8 @@
         setInterval(fetchData, 2000);
         fetchData();
     </script>
+    <footer class="text-center mt-5">
+        Made with ❤ by Carmen
+    </footer>
 </body>
 </html>
