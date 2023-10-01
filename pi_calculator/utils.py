@@ -29,13 +29,12 @@ def compute_pi_chudnovsky(precision):
 
 @shared_task
 def compute_pi_indefinitely():
-    precision = 100
+    precision = 1
     while True:
         pi_value = compute_pi_chudnovsky(precision)
-
         # Store pi_value in Redis
         cache.set("pi_value", pi_value)
 
-        precision += 50
+        precision += 1
         # Add a delay to prevent extremely rapid calculations
         sleep(2)
